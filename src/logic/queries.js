@@ -1,8 +1,5 @@
 const mongo = require('../services/mongo.js')
 
-
-
-
 function getStuff(req,res) {
 
     const response = {
