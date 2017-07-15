@@ -2,7 +2,7 @@ const Promise = require('bluebird')
 const MongoClient = require('mongodb').MongoClient;
 
 
-const driver = 'mongodb://tomcats:cats@ds161012.mlab.com:61012/heroku_x1kdd5jr'
+const driver = 'mongodb://heroku_x1kdd5jr@ds161012.mlab.com:61012/heroku_x1kdd5jr'
 
 function connect(url, collection, callback) {
     MongoClient.connect(url, function (err, db) {
