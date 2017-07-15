@@ -15,14 +15,14 @@ function insert(db, collection, stuff,done) {
         if (Array.isArray(stuff)){
             db.collection(collection).insertMany(stuff, function (err, r) {
                 console.log(r)
-                db.close()
-                done()
+               
+                done(r)
             });
         } else {
             db.collection(collection).insertOne(stuff, function (err, r) {
                 console.log(r)
-                db.close()
-                done()
+                
+                done(r)
             });
         }
     
