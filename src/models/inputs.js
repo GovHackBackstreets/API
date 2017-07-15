@@ -8,7 +8,7 @@ const location = t.struct({
 const step = t.struct({
     location: location,
     supplier: t.Str,
-    rating: t.Number
+  //  rating: t.Number
 })
 
 // a predicate is a function with signature: (x) -> boolean
@@ -21,6 +21,7 @@ const stamp = t.struct({
     locationName: t.Str,
     geoloc:location,
     facilityName: t.Str,
+    postCode:t.Str,
     FSA: t.Str,
     conditionIn: t.Str,
     conditionOut: t.Str,
