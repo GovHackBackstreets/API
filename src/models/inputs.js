@@ -23,8 +23,6 @@ const stamp = t.struct({
     facilityName: t.Str,
     postCode:t.Str,
     FSA: t.Str,
-    conditionIn: t.Str,
-    conditionOut: t.Str,
     physicalQuality:t.maybe(Rating),
     chemicalContaminents:t.maybe(Rating),
     microbialSafety:t.maybe(Rating),
