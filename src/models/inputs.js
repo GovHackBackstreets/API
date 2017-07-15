@@ -4,6 +4,11 @@ const location = t.struct({
     lat: t.Num,
     long: t.Num
 })
+// a predicate is a function with signature: (x) -> boolean
+const predicate = function (x) { return x>-1 || x<=5 };
+
+// a positive number
+const Rating = t.subtype(t.Num, predicate, 'Positive');
 
 const step = t.struct({
     location: location,
