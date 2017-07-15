@@ -69,7 +69,7 @@ mongo.connect(driver, (db) => {
                 }
             })
         }
-        getPassport(parseInt(req.params.id))
+        getPassport(parseInt(req.params.id),res)
 
     })
 
