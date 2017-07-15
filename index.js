@@ -33,7 +33,11 @@ mongo.connect(driver, (db) => {
         const input = {
             id: req.params.id,
             location: req.body.location,
-            supplier: req.body.supplier
+            supplier: req.body.supplier,
+            physicalQuality: req.body.physicalQuality,
+            chemicalContaminents: req.body.chemicalContaminents,
+            microbialSafety: req.body.microbialSafety,
+            temperatureControl: req.body.temperatureControl
         }
         const result = t.validate(input, inputs.step)
         if (result.isValid()) {
