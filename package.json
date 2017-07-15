@@ -4,7 +4,7 @@
   "description": "Food Info API",
   "main": "index.js",
   "scripts": {
-    "start":" node index.js",
+    "start": " node index.js",
     "test": "mocha"
   },
   "repository": {
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/GovHackBackstreets/API#readme",
   "dependencies": {
+    "bluebird": "3.5.0",
     "body-parser": "1.17.2",
+    "cors": "2.8.4",
     "express": "4.15.3",
+    "mongodb": "2.2.30",
     "morgan": "1.8.2"
   }
 }

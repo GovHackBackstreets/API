@@ -1,4 +1,4 @@
-import t = require('tcomb');
+const t = require('tcomb');
 
 const foodItem = t.struct({
 	itemId: t.Integer,
@@ -9,7 +9,7 @@ const foodItem = t.struct({
 			{
 				lat: t.Number,
 			 	long: t.Number,
-			 }
+			 },
 		dateIn: t.Date,
 		dateOut: t.Date
 		facilityName: t.String,
@@ -19,7 +19,7 @@ const foodItem = t.struct({
 		conditionIn: t.String,
 		conditionOut: t.String,
 		}
-	)
+	),
 	componentItems:t.Array(t.Integer),
 });
 
