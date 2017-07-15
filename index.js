@@ -21,9 +21,8 @@ mongo.connect(driver, (db) => {
     app.get('/stuff/:id', database.getStuff);
     app.post('/createSupplier', (req, res) => {
         const input = req.body;
-        console.log(db)
-        mongo.insert(db, 'supplier', input, () => {
-            res.status(200).send('updated')
+        mongo.insert(db, 'supplier', input, (status) => {
+            res.status(200).send(status)
         });
     })
 });

@@ -11,15 +11,21 @@ function connect(url, callback) {
 }
 
 function insert(db, collection, stuff,done) {
-        
+        console.log(stuff)
         if (Array.isArray(stuff)){
             db.collection(collection).insertMany(stuff, function (err, r) {
+                if(err){
+                    done(err)
+                }
                 console.log(r)
                
                 done(r)
             });
         } else {
             db.collection(collection).insertOne(stuff, function (err, r) {
+                if(err){
+                    done(err)
+                }
                 console.log(r)
                 
                 done(r)
