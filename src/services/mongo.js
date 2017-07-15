@@ -8,6 +8,7 @@ function connect(url, callback) {
         if (err) {
             console.log(err)
         }
+        console.log('db is conected');
         callback(db)
     })
 }
