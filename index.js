@@ -64,7 +64,7 @@ mongo.connect(driver, (db) => {
                 response.message.links.forEach(linkedId => {
                     getPassport(linkedId)
                 })
-                if (response.message.links === 0) {
+                if (response.message.id === 1) {
                     res.status(200).send(items)
                 }
             })
