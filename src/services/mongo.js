@@ -16,7 +16,7 @@ function connect(url, collection, callback) {
 
 function insert(collection, stuff,done) {
     connect(driver, collection, (db) => {
-        if (Array.isArray(stuff){
+        if (Array.isArray(stuff)){
             col.insertMany(stuff, function (err, r) {
                 console.log(r)
                 db.close()
