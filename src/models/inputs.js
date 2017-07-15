@@ -8,7 +8,10 @@ const location = t.struct({
 const step = t.struct({
     location: location,
     supplier: t.Str,
-  //  rating: t.Number
+    physicalQuality:t.maybe(Rating),
+    chemicalContaminents:t.maybe(Rating),
+    microbialSafety:t.maybe(Rating),
+    temperatureControl:t.maybe(Rating)
 })
 
 // a predicate is a function with signature: (x) -> boolean
