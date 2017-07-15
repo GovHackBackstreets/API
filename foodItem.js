@@ -11,7 +11,7 @@ const foodItem = t.struct({
 			 	long: t.Number,
 			 },
 		dateIn: t.Date,
-		dateOut: t.Date
+		dateOut: t.Date,
 		facilityName: t.String,
 		facilityAccredation: t.String,
 		facilityChemicals: t.Array(t.String),

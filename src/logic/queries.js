@@ -31,16 +31,6 @@ function getStuff(req,res) {
     res.status(200).send(response);
 }
 
-function createSupplier(req,res){
-    const input = req.body;
-    console.log(db)
-    mongo.insert(db,'supplier',input,(r)=>{
-        res.status(200).send(r)
-    });
-
-}
-
 module.exports = {
-    getStuff:getStuff,
-    createSupplier:createSupplier
+    getStuff:getStuff
 }
