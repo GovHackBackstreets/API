@@ -31,7 +31,7 @@ mongo.connect(driver, (db) => {
 
     app.put('/scan/:id', (req, res) => {
         const input = {
-            id: req.param.id,
+            id: req.params.id,
             location: req.body.location,
             supplier: req.body.supplier
         }
@@ -46,8 +46,8 @@ mongo.connect(driver, (db) => {
     })
 
     app.get('/scan/:id', (req, res) => {
-        console.log(req.query.id)
-        mongo.getPassport(db, 'passport', req.query.id, (response) => {
+        console.log(req.params.id)
+        mongo.getPassport(db, 'passport', req.params.id, (response) => {
             res.status(response.status).send(response.message)
         })
     })
