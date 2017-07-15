@@ -35,7 +35,7 @@ const stamp = t.struct({
 const passport = t.struct({
     itemId: t.Num,
     name:t.Str,
-    stamps: t.list(stamp,'passportstamps'),
+  //  stamps: t.list(stamp,'passportstamps'),
     links: t.list(t.Number,'passportlinks')
 });
 
