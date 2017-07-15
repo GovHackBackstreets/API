@@ -2,9 +2,9 @@
   "name": "api",
   "version": "1.0.0",
   "description": "Food Info API",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "run":"node ./src/index.js",
+    "start":" node index.js",
     "test": "mocha"
   },
   "repository": {

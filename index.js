@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const qrlogic = require('./logic/qr.js');
-const database = require('./logic/queries.js')
+const qrlogic = require('./src/logic/qr.js');
+const database = require('./src/logic/queries.js')
 const bodyParser = require('body-parser')
 const app = express();
 
