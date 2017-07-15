@@ -1,4 +1,6 @@
-const{
+import t = require('tcomb');
+
+const foodItem = t.struct({
 	itemId: t.Integer,
 	steps:t.Array(
 		{	
@@ -19,4 +21,8 @@ const{
 		}
 	)
 	componentItems:t.Array(t.Integer),
+});
+
+module.exports{
+	foodItem: foodItem;
 }
