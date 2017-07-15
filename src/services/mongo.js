@@ -63,6 +63,7 @@ function getPassport(db, collection, select, done) {
         if (err) {
             done({ status: 500, message: err })
         }
+        console.log(doc)
         done({ status: 200, message: doc })
     })
 }
