@@ -58,14 +58,14 @@ mongo.connect(driver, (db) => {
 
     app.get('/scan/all/:id', (req, res) => {
         var items = []
-        function getPassport(id, res) {
+        function getPassport(id, callback) {
             mongo.getPassport(db, 'passport', id, (response) => {
                 items.push(response.message)
                 response.message.links.forEach(linkedId => {
                     getPassport(linkedId)
                 })
                 if (response.message.itemId === 1) {
-                    res()
+                    callback(res)
                 }
             })
         }
