@@ -7,7 +7,7 @@ const driver = 'mongodb://heroku_x1kdd5jr@ds161012.mlab.com:61012/heroku_x1kdd5j
 function connect(url, collection, callback) {
     MongoClient.connect(url, function (err, db) {
         if (err) {
-            throw err
+            console.log(err)
         }
         var col = db.collection(collection);
         callback(db)
