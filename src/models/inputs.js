@@ -12,7 +12,7 @@ const step = t.struct({
 })
 
 // a predicate is a function with signature: (x) -> boolean
-const predicate = function (x) { return x <= 5; };
+const predicate = function (x) { return x < 6; };
 
 // a positive number
 const Rating = t.subtype(t.Num, predicate, 'Positive');
