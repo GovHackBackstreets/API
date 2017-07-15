@@ -19,11 +19,6 @@ const step = t.struct({
     temperatureControl:t.maybe(Rating)
 })
 
-// a predicate is a function with signature: (x) -> boolean
-const predicate = function (x) { return x>-1 || x<=5 };
-
-// a positive number
-const Rating = t.subtype(t.Num, predicate, 'Positive');
 
 const stamp = t.struct({
     locationName: t.Str,
