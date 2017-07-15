@@ -12,7 +12,7 @@ const step = t.struct({
 })
 
 // a predicate is a function with signature: (x) -> boolean
-const predicate = function (x) { return x < 6; };
+const predicate = function (x) { return x>-1 || x<=5 };
 
 // a positive number
 const Rating = t.subtype(t.Num, predicate, 'Positive');
@@ -22,8 +22,8 @@ const stamp = t.struct({
     geoloc:location,
     facilityName: t.Str,
     FSA: t.Str,
-    facilityChemicals: t.list(t.Str,'chemicals'),
-    facilityAllergens: t.list(t.Str,'allergens'),
+    facilityChemicals: t.list(t.Str),
+    facilityAllergens: t.list(t.Str),
     conditionIn: t.Str,
     conditionOut: t.Str,
     physicalQuality:t.maybe(Rating),
@@ -32,17 +32,17 @@ const stamp = t.struct({
     temperatureControl:t.maybe(Rating)
 });
 
-const passport = t.struct({
+const Passport = t.struct({
     itemId: t.Num,
     name:t.Str,
-  //  stamps: t.list(stamp,'passportstamps'),
-    links: t.list(t.Number,'passportlinks')
+    stamps: t.list(stamp),
+    links: t.list(t.Number)
 });
 
 
 
 module.exports = {
     step: step,
-    passport: passport,
+    Passport: Passport,
     stamp:stamp,
 }
