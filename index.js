@@ -9,7 +9,7 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-const driver = 'mongodb://heroku_x1kdd5jr@ds161012.mlab.com:61012/heroku_x1kdd5jr'
+const driver = 'mongodb://master:master@ds161012.mlab.com:61012/heroku_x1kdd5jr'
 
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
