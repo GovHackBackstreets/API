@@ -54,7 +54,7 @@ mongo.connect(driver, (db) => {
     app.post('/createPassport', (req, res) => {
         const input = req.body
         console.log(input)
-        const result = t.validate(input, inputs.passport)
+        const result = t.validate(input, inputs.Passport)
         if (result.isValid) {
             mongo.createPassport(db, 'passport', input, (response) => {
                 res.status(response.status).send(response.message)
