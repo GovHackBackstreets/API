@@ -14,7 +14,7 @@ app.use(cors());
 app.post('/picture', qrlogic.Parse);
 
 app.get('/stuff/:id', database.getStuff);
-
+app.post('/createSupplier',database.createSupplier)
 
 app.listen(port, () => {
     console.log(`api is listening at port : ${port}`);

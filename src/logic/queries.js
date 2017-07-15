@@ -1,3 +1,8 @@
+const mongo = require('../services/mongo.js')
+
+
+
+
 function getStuff(req,res) {
 
     const response = {
@@ -29,6 +34,15 @@ function getStuff(req,res) {
     res.status(200).send(response);
 }
 
+function createSupplier(req,res){
+    const input = req.body;
+    mongo.insert('supplier',input,()=>{
+        res.status(200).send('updated')
+    });
+
+}
+
 module.exports = {
-    getStuff:getStuff
+    getStuff:getStuff,
+    createSupplier:createSupplier
 }
