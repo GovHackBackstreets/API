@@ -15,12 +15,18 @@ app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(cors());
 
-mongo.connect(driver,(db)=>{
+mongo.connect(driver, (db) => {
     app.post('/picture', qrlogic.Parse);
 
     app.get('/stuff/:id', database.getStuff);
-    app.post('/createSupplier',database.createSupplier)
-})
+    app.post('/createSupplier', (req, res) => {
+        const input = req.body;
+        console.log(db)
+        mongo.insert(db, 'supplier', input, () => {
+            res.status(200).send('updated')
+        });
+    })
+});
 
 
 app.listen(port, () => {
