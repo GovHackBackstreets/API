@@ -33,7 +33,8 @@ function getStuff(req,res) {
 
 function createSupplier(req,res){
     const input = req.body;
-    mongo.insert('supplier',input,()=>{
+    console.log(db)
+    mongo.insert(db,'supplier',input,()=>{
         res.status(200).send('updated')
     });
 
