@@ -8,7 +8,6 @@ const mongo = require('./src/services/mongo.js')
 const inputs = require('./src/models/inputs')
 const t = require('tcomb-validation');
 const app = express();
-
 const port = process.env.PORT || 3000;
 
 const driver = 'mongodb://master:master@ds161012.mlab.com:61012/heroku_x1kdd5jr'
@@ -54,6 +53,7 @@ mongo.connect(driver, (db) => {
 
     app.post('/createPassport', (req, res) => {
         const input = req.body
+        console.log(input)
         const result = t.validate(input, input.passport)
         if (result.isValid()) {
             mongo.createPassport(db, 'passport', input, (response) => {
