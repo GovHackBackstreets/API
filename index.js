@@ -47,7 +47,7 @@ mongo.connect(driver, (db) => {
 
     app.get('/scan/:id', (req, res) => {
         
-        mongo.getPassport(db, 'passport', req.params.id, (response) => {
+        mongo.getPassport(db, 'passport', req.query.id, (response) => {
             res.status(response.status).send(response.message)
         })
     })
