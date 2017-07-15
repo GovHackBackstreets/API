@@ -58,7 +58,7 @@ function updatePassport(db, collection, select, stuff, done) {
 }
 
 function getPassport(db, collection, select, done) {
-    db.collection(collection).findOne(select, (err, doc) => {
+    db.collection(collection).findOne({"itemId":select}, (err, doc) => {
         if (err) {
             done({ status: 500, message: err })
         }
