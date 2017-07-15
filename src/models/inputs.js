@@ -22,8 +22,6 @@ const stamp = t.struct({
     geoloc:location,
     facilityName: t.Str,
     FSA: t.Str,
-    facilityChemicals: t.list(t.Str),
-    facilityAllergens: t.list(t.Str),
     conditionIn: t.Str,
     conditionOut: t.Str,
     physicalQuality:t.maybe(Rating),
