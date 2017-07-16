@@ -60,7 +60,7 @@ mongo.connect(driver, (db) => {
     app.get('/scan/all/:id', (req, res) => {
 
         const getPassport = (id) => {
-            return new Promise(function(resolve, reject){
+            return new Promise(function (resolve, reject) {
                 mongo.getPassport(db, 'passport', id, (response) => {
                     if (response.status === 500) { reject(response.message); }
                     else {
@@ -74,12 +74,12 @@ mongo.connect(driver, (db) => {
                 .then(item => {
                     return Promise.all(item.links.forEach(function (subItem) {
                         console.log('subItem');
-                        return getPassports(subItem)
+                        getPassports(subItem)
                     }));
                 },
                 err => {
                     return Promise.reject(err)
-                }).then((subItems)=> {
+                }).then((subItems) => {
                     console.log(subItems);
                     return subItems
                 });
