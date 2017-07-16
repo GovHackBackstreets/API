@@ -75,7 +75,7 @@ mongo.connect(driver, (db) => {
                 })
             })
         }
-        var item = []
+        var array = []
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
