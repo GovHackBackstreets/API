@@ -28,7 +28,7 @@ getFoodItem = function( itemId ){
 	requestSettings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://govhacksapi.herokuapp.com/scan/" + itemId ,
+  "url": "https://govhacksapi.herokuapp.com/scan/" + itemId ,
   "method": "GET",
 }
 
@@ -40,7 +40,6 @@ $.ajax(requestSettings).done(function (response) {
 
 
 updatePage = function(r){
-	console.log(r);
 	 $('#foodName').text(r.name);
 	 $('#locationName').text(r.stamps[0].locationName);
 	 $('#facilityName').text(r.stamps[0].facilityName);
@@ -92,7 +91,7 @@ getFoodItem = function( itemId ){
   requestSettings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://govhacksapi.herokuapp.com/scan/all/" + itemId ,
+  "url": "https://govhacksapi.herokuapp.com/scan/all/" + itemId ,
   "method": "GET",
 }
 
