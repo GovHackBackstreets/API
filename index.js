@@ -75,10 +75,10 @@ mongo.connect(driver, (db) => {
                 })
             })
         }
+        var item = []
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
-                    Promise.resolve(item)
                     array.push(item)
                     if (item.links.length === 0) {
                         console.log(item)
