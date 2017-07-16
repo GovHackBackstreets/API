@@ -64,6 +64,7 @@ mongo.connect(driver, (db) => {
                 mongo.getPassport(db, 'passport', id, (response) => {
                     if (response.status === 500) { reject(response.message); }
                     else {
+                        console.log(response.message)
                         resolve(response.message)
                     }
                 })
