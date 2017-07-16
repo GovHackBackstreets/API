@@ -13,6 +13,7 @@ const Rating = t.subtype(t.Num, predicate, 'Positive');
 const step = t.struct({
     location: location,
     supplier: t.Str,
+    facilityName:t.Str,
     physicalQuality:t.maybe(Rating),
     chemicalContaminents:t.maybe(Rating),
     microbialSafety:t.maybe(Rating),

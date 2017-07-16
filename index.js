@@ -32,15 +32,16 @@ mongo.connect(driver, (db) => {
     })
 
     app.put('/scan/:id',bodyParser.urlencoded(), (req, res) => {
-        console.log(req.body)
+        const body = JSON.parse(req.body)
         const input = {
             id: parseInt(req.params.id),
-            location: req.body.location,
-            supplier: req.body.supplier,
-            physicalQuality: req.body.physicalQuality,
-            chemicalContaminents: req.body.chemicalContaminents,
-            microbialSafety: req.body.microbialSafety,
-            temperatureControl: req.body.temperatureControl
+            location: body.location,
+            supplier: body.supplier,
+            facilityName:body.facilityName,
+            physicalQuality: body.physicalQuality,
+            chemicalContaminents: body.chemicalContaminents,
+            microbialSafety: body.microbialSafety,
+            temperatureControl: body.temperatureControl
         }
         const result = t.validate(input, inputs.step)
         if (result.isValid()) {
