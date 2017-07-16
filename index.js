@@ -72,15 +72,11 @@ mongo.connect(driver, (db) => {
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
-                    console.log(item)
-                    if (!item.links.length === 0) {
                         return Promise.all(item.links.forEach(function (subItem) {
                             console.log('subItem');
                             return getPassports(subItem)
                         }));
-                    } else {
-                        return Promise.resolve('nochild')
-                    }
+                    
                 },
                 err => {
                     return Promise.reject(err)
