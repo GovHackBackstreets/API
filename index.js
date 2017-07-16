@@ -15,6 +15,7 @@ const driver = 'mongodb://master:master@ds161012.mlab.com:61012/heroku_x1kdd5jr'
 
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(cors());
 
 mongo.connect(driver, (db) => {
