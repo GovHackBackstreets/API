@@ -72,20 +72,16 @@ mongo.connect(driver, (db) => {
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
-                        return Promise.all(item.links.map(function (subItem) {
-                            console.log(subItem);
-                            return getPassports(subItem)
-                        }));
-                    
+                    return Promise.all(item.links.map(function (subItem) {
+                        console.log('subItem');
+                        return getPassports(subItem)
+                    }));
                 },
                 err => {
                     return Promise.reject(err)
-                }).then((subItems) => {
+                }).then((subItems)=> {
                     console.log(subItems);
                     return subItems
-                },
-                err => {
-                    return Promise.reject(err)
                 });
         }
 
@@ -93,12 +89,6 @@ mongo.connect(driver, (db) => {
             .then((data) => {
                 console.log('---sending---');
                 res.status(200).send(data)
-            },
-            err => {
-                res.status(500).send(err.message)
-            })
-            .catch(err => {
-                res.status(500).send(err)
             })
 
     })
