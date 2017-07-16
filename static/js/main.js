@@ -28,7 +28,7 @@ getFoodItem = function( itemId ){
 	requestSettings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://govhacksapi.herokuapp.com/scan/" + itemId ,
+  "url": "https://govhacksapi.herokuapp.com/scan/" + itemId ,
   "method": "GET",
 }
 
@@ -92,7 +92,7 @@ getFoodItem = function( itemId ){
   requestSettings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://govhacksapi.herokuapp.com/scan/all/" + itemId ,
+  "url": "https://govhacksapi.herokuapp.com/scan/all/" + itemId ,
   "method": "GET",
 }
 
