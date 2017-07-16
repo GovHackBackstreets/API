@@ -41,7 +41,8 @@ mongo.connect(driver, (db) => {
             physicalQuality: body.physicalQuality,
             chemicalContaminents: body.chemicalContaminents,
             microbialSafety: body.microbialSafety,
-            temperatureControl: body.temperatureControl
+            temperatureControl: body.temperatureControl,
+            FSA:body.FSA
         }
         const result = t.validate(input, inputs.step)
         if (result.isValid()) {
