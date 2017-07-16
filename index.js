@@ -16,6 +16,7 @@ const driver = 'mongodb://master:master@ds161012.mlab.com:61012/heroku_x1kdd5jr'
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('static'));
 
 mongo.connect(driver, (db) => {
     app.post('/picture', qrlogic.Parse);
@@ -74,10 +75,10 @@ mongo.connect(driver, (db) => {
                 })
             })
         }
-        var array = []
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
+                    Promise.resolve(item)
                     array.push(item)
                     if (item.links.length === 0) {
                         console.log(item)
