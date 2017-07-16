@@ -58,8 +58,8 @@ mongo.connect(driver, (db) => {
     })
 
     app.get('/scan/all/:id', (req, res) => {
-        
-        const getPassport = (id)  =>{
+
+        const getPassport = (id) => {
             return new Promise((resolve, reject) => {
                 mongo.getPassport(db, 'passport', id, (response) => {
                     if (response.status === 500) { reject(response.message); }
@@ -69,24 +69,37 @@ mongo.connect(driver, (db) => {
                 })
             })
         }
-        function getPassports(id){
-            return getPassport(id).then(function(item){
-                return Promise.all(item.links.forEach(function(subItem){
-                    console.log('subItem');
-                    return getPassports(subItem)
-                }));
-            }).then(function(subItems){
-                console.log(subItems);
-                return subItems
-            });
+        function getPassports(id) {
+            return getPassport(id)
+                .then(item => {
+                    return Promise.all(item.links.forEach(function (subItem) {
+                        console.log('subItem');
+                        return getPassports(subItem)
+                    }));
+                },
+                err => {
+                    return Promise.reject(err)
+                }).then((subItems) => {
+                    console.log(subItems);
+                    return subItems
+                },
+                err => {
+                    return Promise.reject(err)
+                });
         }
 
         getPassports(parseInt(req.params.id))
-            .then((data)=>{
+            .then((data) => {
                 console.log('---sending---');
                 res.status(200).send(data)
+            },
+            err => {
+                res.status(500).send(err.message)
             })
-        
+            .catch(err => {
+                res.status(500).send(err)
+            })
+
     })
 
 
