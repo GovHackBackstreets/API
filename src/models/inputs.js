@@ -16,7 +16,8 @@ const step = t.struct({
     physicalQuality:t.maybe(Rating),
     chemicalContaminents:t.maybe(Rating),
     microbialSafety:t.maybe(Rating),
-    temperatureControl:t.maybe(Rating)
+    temperatureControl:t.maybe(Rating),
+    FSA:t.Str
 })
 
 

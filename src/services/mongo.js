@@ -36,12 +36,19 @@ function insert(db, collection, stuff, done) {
 function updatePassport(db, collection, select, stuff, done) {
 
     const entry = {
-        location: stuff.location,
         date: Math.round((new Date()).getTime() / 1000),
-        facilityName: stuff.supplier,
-        condition: stuff.condition,
-        rating: stuff.rating
+        facilityName: stuff.facilityName,
+        locationName: stuff.supplier,
+        geoloc: stuff.location,
+        facilityName: t.Str,
+        postCode: 'placeholder',
+        FSA: t.Str,
+        physicalQuality: stuff.physicalQuality,
+        chemicalContaminents: stuff.chemicalContaminents,
+        microbialSafety: stuff.microbialSafety,
+        temperatureControl: stuff.temperatureControl
     }
+
 
     const result = t.validate(entry, input.stamp)
 
@@ -58,8 +65,8 @@ function updatePassport(db, collection, select, stuff, done) {
 }
 
 function getPassport(db, collection, select, done) {
-    console.log({"itemId":select})
-    db.collection(collection).findOne({"itemId":select}, (err, doc) => {
+    console.log({ "itemId": select })
+    db.collection(collection).findOne({ "itemId": select }, (err, doc) => {
         if (err) {
             done({ status: 500, message: err })
         }
