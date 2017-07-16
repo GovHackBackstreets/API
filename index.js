@@ -75,6 +75,7 @@ mongo.connect(driver, (db) => {
                     return getPassports(subItem)
                 }));
             }).then(function(subItems){
+                console.log(subItems)
                 var obj = []
                 obj.push(subItems)
                 return obj
@@ -83,6 +84,7 @@ mongo.connect(driver, (db) => {
 
         getPassports(parseInt(req.params.id))
             .then((data)=>{
+                console.log(data);
                 res.status(200).send(data)
             })
         
