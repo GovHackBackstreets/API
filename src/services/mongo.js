@@ -48,20 +48,12 @@ function updatePassport(db, collection, select, stuff, done) {
         microbialSafety: stuff.microbialSafety,
         temperatureControl: stuff.temperatureControl
     }
-
-
-    const result = t.validate(entry, input.stamp)
-
-    if (result.isValid()) {
         db.collection(collection).updateOne({ itemID: select }, { $push: { stamp: entry } }, (err, doc) => {
             if (err) {
                 done({ status: 500, message: err })
             }
             done({ status: 200, message: doc })
         })
-    } else {
-        done({ status: 400, message: result.errors })
-    }
 }
 
 function getPassport(db, collection, select, done) {
