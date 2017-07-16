@@ -65,13 +65,11 @@ mongo.connect(driver, (db) => {
                     getPassport(linkedId)
                 })
                 if (response.message.itemId === 1) {
-                    callback(res)
+                    res.status(200).send(items)
                 }
             })
         }
-        getPassport(parseInt(req.params.id),(res)=>{
-            res.status(200).send(items);
-        })
+        getPassport(parseInt(req.params.id))
 
     })
 
