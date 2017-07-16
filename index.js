@@ -7,6 +7,7 @@ const cors = require('cors');
 const mongo = require('./src/services/mongo.js')
 const inputs = require('./src/models/inputs')
 const t = require('tcomb-validation');
+const Promise = require('bluebird')
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -62,21 +63,32 @@ mongo.connect(driver, (db) => {
         const getPassport = (id) => {
             return new Promise(function (resolve, reject) {
                 mongo.getPassport(db, 'passport', id, (response) => {
-                    if (response.status === 500) { reject(response.message); }
+                    if (response.status === 500) { 
+                        console.log('cant get stuff from db')
+                        reject(response.message); }
                     else {
                         resolve(response.message)
                     }
                 })
             })
         }
+        var array = []
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
-                    return Promise.all(item.links.forEach(function (subItem) {
-                        return getPassports(subItem)
-                    }));
+                    array.push(item)
+                    if (item.links.length === 0) {
+                        console.log(item)
+                        Promise.resolve(item)
+                    } else {
+                        return Promise.all(item.links.map(function (linkId) {
+                            console.log('looking for '+linkId)
+                            return getPassports(linkId)
+                        }));
+                    }
                 }).then((subItems) => {
-                    console.log(subItems);
+                    console.log('------');
+                    console.log(subItems)
                     return subItems
                 });
         }
@@ -84,7 +96,7 @@ mongo.connect(driver, (db) => {
         getPassports(parseInt(req.params.id))
             .then((data) => {
                 console.log('---sending---');
-                res.status(200).send(data)
+                res.status(200).send(array)
             })
 
     })
