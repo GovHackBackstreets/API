@@ -40,16 +40,14 @@ function updatePassport(db, collection, select, stuff, done) {
         facilityName: stuff.facilityName,
         locationName: stuff.supplier,
         geoloc: stuff.location,
-        facilityName: t.Str,
         postCode: 'placeholder',
-        FSA: t.Str,
         physicalQuality: stuff.physicalQuality,
         chemicalContaminents: stuff.chemicalContaminents,
         microbialSafety: stuff.microbialSafety,
         temperatureControl: stuff.temperatureControl
     }
 
-    console.log({ "itemID": select },entry)
+    console.log({ "itemID": select })
         db.collection(collection).updateOne({ "itemID": select }, { $push: { stamps: entry } }, (err, doc) => {
             if (err) {
                 done({ status: 500, message: err })
