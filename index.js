@@ -72,6 +72,7 @@ mongo.connect(driver, (db) => {
         function getPassports(id) {
             return getPassport(id)
                 .then(item => {
+                    console.log(item)
                     return Promise.all(item.links.forEach(function (subItem) {
                         console.log('subItem');
                         return getPassports(subItem)
