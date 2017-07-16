@@ -28,7 +28,7 @@ function getStuff(req, res) {
     }
 
 
-    res.status(200).send(response);
+    res.status(200).send('look at GET /scan/id or /scan/all/id');
 }
 
 module.exports = {
