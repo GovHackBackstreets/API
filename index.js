@@ -31,7 +31,7 @@ mongo.connect(driver, (db) => {
         });
     })
 
-    app.put('/scan/:id', (req, res) => {
+    app.put('/scan/:id',bodyParser.urlencoded(), (req, res) => {
         console.log(req.body)
         const input = {
             id: parseInt(req.params.id),
