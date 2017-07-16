@@ -58,20 +58,34 @@ mongo.connect(driver, (db) => {
     })
 
     app.get('/scan/all/:id', (req, res) => {
-        var items = []
-        function getPassport(id, callback) {
-            mongo.getPassport(db, 'passport', id, (response) => {
-                items.push(response.message)
-                response.message.links.forEach(linkedId => {
-                    getPassport(linkedId)
+        
+        function getPassport(id) {
+            return new Promise((resolve, reject) => {
+                mongo.getPassport(db, 'passport', id, (response) => {
+                    if (response.status === 500) { reject(response.message); }
+                    else {
+                        resolve(response.message)
+                    }
                 })
-                if (response.message.itemId === 1) {
-                    res.status(200).send(items)
-                }
             })
         }
-        getPassport(parseInt(req.params.id))
+        function getPassports(id){
+            return getPassport(id).then(function(item){
+                return Promise.all(item.links.forEach(function(subItem){
+                    return getPassports(subItem)
+                }));
+            }).then(function(subItems){
+                var obj = []
+                obj.push(subItems)
+                return obj
+            });
+        }
 
+        getPassports(parseInt(req.params.id))
+            .then((data)=>{
+                res.status(200).send(data)
+            })
+        
     })
 
 
