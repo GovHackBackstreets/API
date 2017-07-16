@@ -40,7 +40,6 @@ $.ajax(requestSettings).done(function (response) {
 
 
 updatePage = function(r){
-	console.log(r);
 	 $('#foodName').text(r.name);
 	 $('#locationName').text(r.stamps[0].locationName);
 	 $('#facilityName').text(r.stamps[0].facilityName);
