@@ -76,16 +76,14 @@ mongo.connect(driver, (db) => {
                     return getPassports(subItem)
                 }));
             }).then(function(subItems){
-                console.log(subItems)
-                var obj = []
-                obj.push(subItems)
-                return obj
+                console.log('--got--');
+                return subItems
             });
         }
 
         getPassports(parseInt(req.params.id))
             .then((data)=>{
-                console.log(data);
+                console.log('---sending---');
                 res.status(200).send(data)
             })
         
