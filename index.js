@@ -60,7 +60,7 @@ mongo.connect(driver, (db) => {
     app.get('/scan/all/:id', (req, res) => {
 
         const getPassport = (id) => {
-            return new Promise((resolve, reject) => {
+            return new Promise(function(resolve, reject){
                 mongo.getPassport(db, 'passport', id, (response) => {
                     if (response.status === 500) { reject(response.message); }
                     else {
