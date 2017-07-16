@@ -48,7 +48,7 @@ function updatePassport(db, collection, select, stuff, done) {
     }
 
     console.log({ "itemID": select })
-        db.collection(collection).updateOne({ "itemID": select }, { $push: { stamps: entry } }, (err, doc) => {
+        db.collection(collection).updateOne({ "itemId": select }, { $push: { stamps: entry } }, (err, doc) => {
             if (err) {
                 done({ status: 500, message: err })
             }
